@@ -1,7 +1,11 @@
 import './main.css'
 import React, { Component } from 'react'
-import { videos } from './Data.jsx'
+import { videos, sounds, images, familyMembers } from './Data.jsx'
 import Video from './Video.jsx'
+import SoundWidget from './SoundWidget.jsx'
+import ImageWidget from './ImageWidget.jsx'
+import FamilyMember from './FamilyMember.jsx'
+
 class App extends Component {
     render () { 
         return (<div>  
@@ -14,7 +18,41 @@ class App extends Component {
                         footer = {vd.caption}
                     />)
                 }) 
-            }         
+            }  
+            { 
+                sounds.map(sd => {
+                    return (
+                    <SoundWidget 
+                    url = {sd.location}
+                    />   
+                    )
+                }
+
+                )
+            }     
+            {
+                images.map(image => {
+                    return (
+                        <ImageWidget 
+                        url = {image.url} 
+                        description = {image.caption}
+                        />)
+                })
+            }
+            {
+                familyMembers.map(family => {
+                    return (
+                        <FamilyMember
+                        title = {family.name + ":"}
+                        saying = {family.quote} 
+                        />
+                    )
+                }
+
+                )
+
+            }
+                   
             </div>
         )
 
